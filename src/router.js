@@ -64,6 +64,30 @@ const Routers = function ({ history, app }) {
       path: '/post',
       models: () => [import('./models/post')],
       component: () => import('./routes/post/'),
+    }, {
+      path: '/history_avg',
+      models: () => [import('./models/historyAVG')],
+      component: () => import('./routes/HistoryAVG'),
+    }, {
+      path: '/history_count',
+      models: () => [import('./models/historyCount')],
+      component: () => import('./routes/HistoryCount'),
+    }, {
+      path: '/top_price_rise',
+      models: () => [import('./models/topPriceRise')],
+      component: () => import('./routes/TopPriceRise'),
+    }, {
+      path: '/top_price_cut',
+      models: () => [import('./models/topPriceCut')],
+      component: () => import('./routes/TopPriceCut'),
+    }, {
+      path: '/district_cmp',
+      medels: () => [import('./models/districtCMP')],
+      component: () => import('./routes/DistrictCMP'),
+    }, {
+      path: '/map_cmp',
+      models: () => [import('./models/mapCMP')],
+      component: () => import('./routes/MapCMP'),
     },
   ]
 

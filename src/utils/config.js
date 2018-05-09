@@ -2,10 +2,10 @@ const APIV1 = '/api/v1'
 const APIV2 = '/api/v2'
 
 module.exports = {
-  name: 'AntD Admin',
-  prefix: 'antdAdmin',
-  footerText: 'Ant Design Admin  © 2017 zuiidea',
-  logo: '/logo.svg',
+  name: 'Beijing Estate',
+  prefix: 'monitor',
+  footerText: 'Monitor Web  © 2018 Accelerise',
+  logo: '/be.png',
   iconFontCSS: '/iconfont.css',
   iconFontJS: '/iconfont.js',
   CORS: [],
@@ -21,6 +21,8 @@ module.exports = {
     posts: `${APIV1}/posts`,
     user: `${APIV1}/user/:id`,
     dashboard: `${APIV1}/dashboard`,
+    chengjiao: `${APIV2}/chengjiaos`,
+    xiaoqus: `${APIV2}/xiaoqus`,
     menus: `${APIV1}/menus`,
     weather: `${APIV1}/weather`,
     v1test: `${APIV1}/test`,

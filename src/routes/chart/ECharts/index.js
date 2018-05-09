@@ -71,14 +71,6 @@ const chartList = [
     label: 'BubbleGradient',
     value: 'BubbleGradientComponent',
   },
-  {
-    label: 'TransparentBar3D',
-    value: 'TransparentBar3DComPonent',
-  },
-  {
-    label: 'MoonComponent',
-    value: 'MoonComponent',
-  },
 ]
 
 class Chart extends React.Component {

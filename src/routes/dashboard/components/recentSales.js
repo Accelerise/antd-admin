@@ -26,20 +26,27 @@ const status = {
 function RecentSales ({ data }) {
   const columns = [
     {
-      title: 'NAME',
-      dataIndex: 'name',
+      title: '小区名',
+      dataIndex: 'xq_name',
     }, {
-      title: 'STATUS',
-      dataIndex: 'status',
-      render: text => <Tag color={status[text].color}>{status[text].text}</Tag>,
+      title: '面积',
+      dataIndex: 'area',
     }, {
-      title: 'DATE',
-      dataIndex: 'date',
+    //   title: '链接',
+    //   dataIndex: 'area',
+    // }, {
+      title: '签约时间',
+      dataIndex: 'sign_at',
       render: text => new Date(text).format('yyyy-MM-dd'),
     }, {
-      title: 'PRICE',
-      dataIndex: 'price',
-      render: (text, it) => <span style={{ color: status[it.status].color }}>${text}</span>,
+      title: '房型',
+      dataIndex: 'style',
+    }, {
+      title: '单价',
+      dataIndex: 'unit_price',
+    }, {
+      title: '总价',
+      dataIndex: 'total_price',
     },
   ]
   return (

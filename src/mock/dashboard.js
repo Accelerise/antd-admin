@@ -8,10 +8,8 @@ const { apiPrefix } = config
 const Dashboard = Mock.mock({
   'sales|8': [
     {
-      'name|+1': 2008,
-      'Clothes|200-500': 1,
-      'Food|180-400': 1,
-      'Electronics|300-550': 1,
+      'sign_at|+2000': 1525300367,
+      'avg|300-600': 1
     },
   ],
   cpu: {
@@ -83,15 +81,17 @@ const Dashboard = Mock.mock({
       },
     },
   ],
-  'recentSales|36': [
+  'recentChengjiaos|36': [
     {
       'id|+1': 1,
-      name: '@last',
-      'status|1-4': 1,
-      date () {
+      xq_name: '@last',
+      style: '两室一厅',
+      'area|40-120': 1,
+      sign_at () {
         return `${Mock.Random.integer(2015, 2016)}-${Mock.Random.date('MM-dd')} ${Mock.Random.time('HH:mm:ss')}`
       },
-      'price|10-200.1-2': 1,
+      'unit_price|300-600.1-7': 1,
+      'total_price|10-200.1-2': 1,
     },
   ],
   quote: {
@@ -104,24 +104,19 @@ const Dashboard = Mock.mock({
     {
       icon: 'pay-circle-o',
       color: color.green,
-      title: 'Online Review',
+      title: '平均成交额（万）',
       number: 2781,
     }, {
-      icon: 'team',
+      icon: 'appstore',
       color: color.blue,
-      title: 'New Customers',
-      number: 3241,
+      title: '平均单价（元/平米）',
+      number: 39901,
     }, {
-      icon: 'message',
+      icon: 'form',
       color: color.purple,
-      title: 'Active Projects',
+      title: '成交数（个）',
       number: 253,
-    }, {
-      icon: 'shopping-cart',
-      color: color.red,
-      title: 'Referrals',
-      number: 4324,
-    },
+    }
   ],
 })
 
