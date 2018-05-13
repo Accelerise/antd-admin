@@ -1,30 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
-import { routerRedux } from 'dva/router'
-import queryString from 'query-string'
 import { Page } from 'components'
-import List from './List'
+import List from '../TopPriceCut/List'
 
 
-const TopPriceRise = ({
-  dispatch, loading, location,
-}) => {
-  location.query = queryString.parse(location.search)
-  const { query, pathname } = location
-
+const TopPriceRise = ({ topPriceRise, loading }) => {
   const listProps = {
-    dataSource: [],
-    loading: loading.effects['post/query'],
+    dataSource: topPriceRise.topRiseErshous,
+    loading: loading.effects['topPriceRise/queryRise'],
     onChange (page) {
-      dispatch(routerRedux.push({
-        pathname,
-        search: queryString.stringify({
-          ...query,
-          page: page.current,
-          pageSize: page.pageSize,
-        }),
-      }))
+      console.log(page)
     },
   }
 
@@ -37,10 +23,8 @@ const TopPriceRise = ({
 }
 
 TopPriceRise.propTypes = {
-  post: PropTypes.object,
+  topPriceRise: PropTypes.object,
   loading: PropTypes.object,
-  location: PropTypes.object,
-  dispatch: PropTypes.func,
 }
 
-export default connect(({ post, loading }) => ({ post, loading }))(TopPriceRise)
+export default connect(data => data)(TopPriceRise)

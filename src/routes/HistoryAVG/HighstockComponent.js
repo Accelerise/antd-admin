@@ -8,7 +8,7 @@ const config = {
     selected: 1,
   },
   title: {
-    text: '历史小区成交',
+    text: '历史成交价格 (元/平米)',
   },
   series: [],
 }

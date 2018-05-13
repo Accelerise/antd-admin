@@ -17,6 +17,7 @@ export default modelExtend(model, {
       history.listen(({ pathname, search }) => {
         if (pathname === '/history_avg' || pathname === '/') {
           dispatch({ type: 'queryHistory', payload: { ...queryString.parse(search) } })
+          dispatch({ type: 'queryXiaoqu', payload: { ...queryString.parse(search) } })
         }
       })
     },

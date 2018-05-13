@@ -86,7 +86,7 @@ class HistoryAVG extends React.Component {
           </Col>
           <Col lg={8} md={24}>
             <Card bordered={false} title="小区（可选）">
-              <Select showSearch style={{ width: 240 }} value={this.getUrlQueryXiaoqu()} onChange={this.handleXiaoquChange} onSearch={this.handleXiaoquSearch}>
+              <Select placeholder="搜索小区名..." showSearch style={{ width: 240 }} value={this.getUrlQueryXiaoqu()} onChange={this.handleXiaoquChange} onSearch={this.handleXiaoquSearch}>
                 {xiaoqus.map(xiaoqu => <Option key={xiaoqu.name} value={xiaoqu.name}>{xiaoqu.name}</Option>)}
               </Select>
             </Card>
