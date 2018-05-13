@@ -18,3 +18,11 @@ export function queryXiaoqu (params) {
     data: params,
   })
 }
+
+export function queryMap (params) {
+  return request({
+    url: `${chengjiao}/map`,
+    method: 'get',
+    data: params,
+  })
+}

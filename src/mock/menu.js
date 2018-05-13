@@ -32,11 +32,11 @@ let database = [
   //   name: '商圈周边房价',
   //   route: '/district_cmp',
   // },
-  // {
-  //   id: '13',
-  //   name: '房价地形分布',
-  //   route: '/map_cmp',
-  // },
+  {
+    id: '13',
+    name: '房价地形分布',
+    route: '/map_cmp',
+  },
   // {
   //   id: '2',
   //   bpid: '1',
