@@ -86,7 +86,7 @@ const Routers = function ({ history, app }) {
       component: () => import('./routes/DistrictCMP'),
     }, {
       path: '/map_cmp',
-      models: () => [import('./models/mapCMP')],
+      models: () => [import('./models/mapCMP'), import('./models/historyAVG')],
       component: () => import('./routes/MapCMP'),
     },
   ]

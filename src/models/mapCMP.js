@@ -2,17 +2,19 @@ import { parse } from 'qs'
 import modelExtend from 'dva-model-extend'
 import { queryMap } from 'services/chengjiao'
 import { model } from 'models/common'
+import queryString from 'query-string'
 
 export default modelExtend(model, {
   namespace: 'mapCMP',
   state: {
     dataset: [],
+    minPrice: 0,
   },
   subscriptions: {
     setup ({ dispatch, history }) {
-      history.listen(({ pathname }) => {
+      history.listen(({ pathname, search }) => {
         if (pathname === '/map_cmp' || pathname === '/') {
-          dispatch({ type: 'queryMap' })
+          dispatch({ type: 'queryMap', payload: { ...queryString.parse(search) } })
         }
       })
     },
@@ -25,7 +27,7 @@ export default modelExtend(model, {
 
       yield put({
         type: 'updateState',
-        payload: { dataset: response.data },
+        payload: { dataset: response.data, minPrice: response.min_price },
       })
     },
   },

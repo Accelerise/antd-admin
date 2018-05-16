@@ -33,7 +33,6 @@ export default modelExtend(model, {
       })
     },
     * queryXiaoqu ({ payload }, { call, put }) {
-      console.log(payload)
       const response = yield call(queryXiaoqu, parse(payload))
       yield put({
         type: 'updateState',
