@@ -23,6 +23,7 @@ module.exports = {
     dashboard: `${APIV2}/dashboard`,
     chengjiao: `${APIV2}/chengjiaos`,
     ershou: `${APIV2}/ershous`,
+    zufang: `${APIV2}/zufangs`,
     xiaoqus: `${APIV2}/xiaoqus`,
     menus: `${APIV1}/menus`,
     weather: `${APIV1}/weather`,

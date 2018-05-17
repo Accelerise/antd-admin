@@ -1,19 +1,19 @@
 import { request, config } from 'utils'
 
 const { api } = config
-const { ershou } = api
+const { zufang } = api
 
-export function queryErshouRise (params) {
+export function queryZufangRise (params) {
   return request({
-    url: `${ershou}/top_rise`,
+    url: `${zufang}/top_rise`,
     method: 'get',
     data: params,
   })
 }
 
-export function queryErshouCut (params) {
+export function queryZufangCut (params) {
   return request({
-    url: `${ershou}/top_decrease`,
+    url: `${zufang}/top_decrease`,
     method: 'get',
     data: params,
   })

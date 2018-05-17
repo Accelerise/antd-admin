@@ -3,21 +3,32 @@ import PropTypes from 'prop-types'
 import { Table } from 'antd'
 import { color } from '../../utils/theme'
 
+const totalPriceFormatter = text => `${text} 万 `
+const rentFormatter = text => `${text} 元/平米`
+
 const Indicator = (props) => {
+  let formatter = totalPriceFormatter
+  if (props.type === 'zufang') {
+    formatter = rentFormatter
+  }
   if (props.number > 0) {
-    return <span style={{ color: color.red }}>{`${props.number} 万↑`}</span>
+    return <span style={{ color: color.red }}>{`${formatter(props.number)}↑`}</span>
   }
   if (props.number < 0) {
-    return <span style={{ color: color.green }}>{`${props.number} 万↓`}</span>
+    return <span style={{ color: color.green }}>{`${formatter(props.number)}↓`}</span>
   }
-  return <span>{`${props.number} 万`}</span>
+  return <span>{formatter(props.number)}</span>
 }
 
 Indicator.propTypes = {
   number: PropTypes.number,
 }
 
-const List = ({ ...tableProps }) => {
+const List = ({ type, ...tableProps }) => {
+  let formatter = totalPriceFormatter
+  if (type === 'zufang') {
+    formatter = rentFormatter
+  }
   const columns = [
     {
       title: '链接',
@@ -26,15 +37,15 @@ const List = ({ ...tableProps }) => {
     }, {
       title: '最低价',
       dataIndex: 'min_total_price',
-      render: text => `${text} 万`,
+      render: formatter,
     }, {
       title: '最高价',
       dataIndex: 'max_total_price',
-      render: text => `${text} 万`,
+      render: formatter,
     }, {
       title: '当前价',
       dataIndex: 'current_price',
-      render: text => `${text} 万`,
+      render: formatter,
     }, {
       title: '收集时间',
       dataIndex: 'scan_at',
@@ -42,11 +53,11 @@ const List = ({ ...tableProps }) => {
     }, {
       title: '相比最高价',
       dataIndex: 'decrease_by_max',
-      render: text => <Indicator number={text} />,
+      render: text => <Indicator number={text} type={type} />,
     }, {
       title: '相比最低价',
       dataIndex: 'rise_by_min',
-      render: text => <Indicator number={text} />,
+      render: text => <Indicator number={text} type={type} />,
     },
   ]
 

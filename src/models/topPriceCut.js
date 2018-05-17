@@ -1,7 +1,9 @@
 import { parse } from 'qs'
 import modelExtend from 'dva-model-extend'
-import { queryCut } from 'services/ershou'
+import { queryErshouCut } from 'services/ershou'
+import { queryZufangCut } from 'services/zufang'
 import { model } from 'models/common'
+import queryString from 'query-string'
 
 export default modelExtend(model, {
   namespace: 'topPriceCut',
@@ -10,9 +12,9 @@ export default modelExtend(model, {
   },
   subscriptions: {
     setup ({ dispatch, history }) {
-      history.listen(({ pathname }) => {
+      history.listen(({ pathname, search }) => {
         if (pathname === '/top_price_cut' || pathname === '/') {
-          dispatch({ type: 'queryCut' })
+          dispatch({ type: 'queryCut', payload: { ...queryString.parse(search) } })
         }
       })
     },
@@ -21,10 +23,15 @@ export default modelExtend(model, {
     * queryCut ({
       payload,
     }, { call, put }) {
-      const response = yield call(queryCut, parse(payload))
+      let response
+      if (payload.type === 'zufang') {
+        response = yield call(queryZufangCut, parse(payload))
+      } else {
+        response = yield call(queryErshouCut, parse(payload))
+      }
       yield put({
         type: 'updateState',
-        payload: { topCutErshous: response.data },
+        payload: { topCutStats: response.data },
       })
     },
   },
