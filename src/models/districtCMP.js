@@ -1,35 +1,32 @@
 import { parse } from 'qs'
 import modelExtend from 'dva-model-extend'
-import { query } from 'services/dashboard'
+import { queryDistrictStat } from 'services/chengjiao'
 import { model } from 'models/common'
+import queryString from 'query-string'
 
 export default modelExtend(model, {
   namespace: 'districtCMP',
   state: {
-    weather: {
-      city: '深圳',
-      temperature: '30',
-      name: '晴',
-      icon: '//s5.sencdn.com/web/icons/3d_50/2.png',
-    },
+    districtStats: [],
+    regions: [],
   },
   subscriptions: {
     setup ({ dispatch, history }) {
-      history.listen(({ pathname }) => {
-        if (pathname === '/history_avg' || pathname === '/') {
-          dispatch({ type: 'query' })
+      history.listen(({ pathname, search }) => {
+        if (pathname === '/district_cmp' || pathname === '/') {
+          dispatch({ type: 'queryDistrictStat', payload: { ...queryString.parse(search) } })
         }
       })
     },
   },
   effects: {
-    * query ({
+    * queryDistrictStat ({
       payload,
     }, { call, put }) {
-      const data = yield call(query, parse(payload))
+      const response = yield call(queryDistrictStat, parse(payload))
       yield put({
         type: 'updateState',
-        payload: data,
+        payload: { districtStats: response.data },
       })
     },
   },

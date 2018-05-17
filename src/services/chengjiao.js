@@ -26,3 +26,11 @@ export function queryMap (params) {
     data: params,
   })
 }
+
+export function queryDistrictStat (params) {
+  return request({
+    url: `${chengjiao}/district_stat`,
+    method: 'get',
+    data: params,
+  })
+}

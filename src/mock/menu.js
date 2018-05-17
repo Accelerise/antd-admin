@@ -27,11 +27,11 @@ let database = [
     name: '涨价榜',
     route: '/top_price_rise',
   },
-  // {
-  //   id: '12',
-  //   name: '商圈周边房价',
-  //   route: '/district_cmp',
-  // },
+  {
+    id: '12',
+    name: '商圈周边房价',
+    route: '/district_cmp',
+  },
   {
     id: '13',
     name: '房价地形分布',

@@ -82,7 +82,7 @@ const Routers = function ({ history, app }) {
       component: () => import('./routes/TopPriceCut'),
     }, {
       path: '/district_cmp',
-      medels: () => [import('./models/districtCMP')],
+      models: () => [import('./models/districtCMP')],
       component: () => import('./routes/DistrictCMP'),
     }, {
       path: '/map_cmp',
